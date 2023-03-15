@@ -4,6 +4,7 @@ package org.example;
 import java.util.Scanner;
 import java.lang.Math;
 
+
 public class Solve {
 //    private static final Logger logger = LogManager.getLogger(Solve.class);
     public Solve()
@@ -20,9 +21,9 @@ public class Solve {
         Scanner input = new Scanner(System.in);
 
         // ask users to enter operator
-        System.out.println("Choose an operator: +, -, *, /,f,s");
-        operator = input.next().charAt(0);
+      System.out.println("Choose an operator: +, -, *, /,f,s");
 
+        operator = input.next().charAt(0);
         // ask users to enter numbers
         if(operator=='+' || operator=='-' || operator=='*' || operator=='/'  ) {
             System.out.println("Enter first number");

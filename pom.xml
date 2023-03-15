@@ -45,6 +45,9 @@
 <!--        </pluginManagement>-->
 <!--    </build>-->
     <build>
+
+            <finalName>maven-docker-project</finalName>
+
         <plugins>
             <plugin>
                 <!-- Build an executable JAR -->
