@@ -28,7 +28,7 @@ pipeline {
         }
         stage('Publish Docker Images') {
             steps {
-                withDockerRegistry([ credentialsId: "dockerid", url: "" ]) {
+                withDockerRegistry([ credentialsId: "docker_creds", url: "" ]) {
                     sh 'docker push pradhyuman99/speminiproject:latest'
                 }
             }
