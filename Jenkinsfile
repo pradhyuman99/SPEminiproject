@@ -21,18 +21,18 @@ pipeline {
                 sh 'mvn clean install'
             }
         }
-//         stage('Build Docker Images') {
-//             steps {
-//                 sh 'docker build -t inspiringrai/calcproj:latest .'
-//             }
-//         }
-//         stage('Publish Docker Images') {
-//             steps {
-//                 withDockerRegistry([ credentialsId: "dockerid", url: "" ]) {
-//                     sh 'docker push inspiringrai/calcproj:latest'
-//                 }
-//             }
-//         }
+        stage('Build Docker Images') {
+            steps {
+                sh 'docker build -t inspiringrai/calcproj:latest .'
+            }
+        }
+        stage('Publish Docker Images') {
+            steps {
+                withDockerRegistry([ credentialsId: "dockerid", url: "" ]) {
+                    sh 'docker push inspiringrai/calcproj:latest'
+                }
+            }
+        }
 //         stage('Clean Docker Images') {
 //             steps {
 //                 sh 'docker rmi -f inspiringrai/calcproj:latest'
