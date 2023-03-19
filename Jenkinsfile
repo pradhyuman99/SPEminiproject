@@ -26,29 +26,29 @@ pipeline {
                 sh 'docker build -t pradhyuman99/speminiproject:latest .'
             }
         }
-//         stage('Publish Docker Images') {
-//             steps {
-//                 withDockerRegistry([ credentialsId: "dockerid", url: "" ]) {
-//                     sh 'docker push inspiringrai/calcproj:latest'
-//                 }
-//             }
-//         }
-//         stage('Clean Docker Images') {
-//             steps {
-//                 sh 'docker rmi -f inspiringrai/calcproj:latest'
-//             }
-//         }
-//         stage('Deploy and Run Image'){
-//             steps {
-//                 ansiblePlaybook becomeUser: null, colorized: true, disableHostKeyChecking: true, installation: 'Ansible', inventory: 'inventory', playbook: 'playbook.yml', sudoUser: null
-//             }
-//         }
-//
-//     }
-//
-//     post {
-//         always {
-//             sh 'docker logout'
-//         }
+        stage('Publish Docker Images') {
+            steps {
+                withDockerRegistry([ credentialsId: "dockerid", url: "" ]) {
+                    sh 'docker push pradhyuman99/speminiproject:latest'
+                }
+            }
+        }
+        stage('Clean Docker Images') {
+            steps {
+                sh 'docker rmi -f pradhyuman99/speminiproject:latest'
+            }
+        }
+        stage('Deploy and Run Image'){
+            steps {
+                ansiblePlaybook becomeUser: null, colorized: true, disableHostKeyChecking: true, installation: 'Ansible', inventory: 'inventory', playbook: 'playbook.yml', sudoUser: null
+            }
+        }
+
+    }
+
+    post {
+        always {
+            sh 'docker logout'
+        }
      }
 }
