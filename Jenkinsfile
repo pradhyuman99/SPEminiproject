@@ -21,11 +21,11 @@ pipeline {
                 sh 'mvn clean install'
             }
         }
-//         stage('Build Docker Images') {
-//             steps {
-//                 sh 'docker build -t inspiringrai/calcproj:latest .'
-//             }
-//         }
+        stage('Build Docker Images') {
+            steps {
+                sh 'docker build -t pradhyuman99/SPEminiproject:latest .'
+            }
+        }
 //         stage('Publish Docker Images') {
 //             steps {
 //                 withDockerRegistry([ credentialsId: "dockerid", url: "" ]) {
