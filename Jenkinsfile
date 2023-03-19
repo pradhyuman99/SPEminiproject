@@ -23,7 +23,7 @@ pipeline {
         }
         stage('Build Docker Images') {
             steps {
-                sh 'docker build -t pradhyuman99/SPEminiproject:latest .'
+                sh 'docker build -t pradhyuman99/speminiproject:latest .'
             }
         }
 //         stage('Publish Docker Images') {
