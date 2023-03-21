@@ -8,7 +8,7 @@
         state: started
 
     - name: pull docker image
-      shell: docker pull pradhyuman99/speminiproject
+      shell:sudo docker pull pradhyuman99/speminiproject
 
     - name: running container
-      shell: docker run -it -d pradhyuman99/speminiproject/bin/bash
+      shell:sudo docker run -it -d pradhyuman99/speminiproject/bin/bash
