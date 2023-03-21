@@ -1,2 +1,2 @@
 [ubuntu22]
-172.17.0.1 ansible_user=joshi
+127.0.0.1 ansible_user=server
