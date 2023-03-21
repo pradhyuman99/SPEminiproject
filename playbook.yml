@@ -11,4 +11,4 @@
       shell:sudo docker pull pradhyuman99/speminiproject
 
     - name: running container
-      shell:sudo docker run -it -d pradhyuman99/speminiproject/bin/bash
+      shell:sudo docker run -it -d pradhyuman99/speminiproject /bin/bash
