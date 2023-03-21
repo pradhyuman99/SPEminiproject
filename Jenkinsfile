@@ -23,19 +23,19 @@ pipeline {
         }
         stage('Build Docker Images') {
             steps {
-                sh 'docker build -t pradhyuman99/speminiproject:latest .'
+                sh 'docker build -t maven-docker-project.jar:latest .'
             }
         }
         stage('Publish Docker Images') {
             steps {
                 withDockerRegistry([ credentialsId: "docker_creds", url: "" ]) {
-                    sh 'docker push pradhyuman99/speminiproject:latest'
+                    sh 'docker push maven-docker-project.jar:latest'
                 }
             }
         }
         stage('Clean Docker Images') {
             steps {
-                sh 'docker rmi -f pradhyuman99/speminiproject:latest'
+                sh 'docker rmi -f maven-docker-project.jar:latest'
             }
         }
         stage('Deploy and Run Image'){
