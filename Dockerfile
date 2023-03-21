@@ -1,4 +1,4 @@
 FROM openjdk:11
-ADD target/maven-docker-project.jar maven-docker-project.jar
-ENTRYPOINT ["java", "-jar","maven-docker-project.jar"]
+ADD target/pradhyuman99spemini.jar pradhyuman99spemini.jar
+ENTRYPOINT ["java", "-jar","pradhyuman99spemini.jar"]
 EXPOSE 8080

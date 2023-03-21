@@ -46,7 +46,7 @@
 <!--    </build>-->
     <build>
 
-            <finalName>maven-docker-project</finalName>
+            <finalName>pradhyuman99spemini</finalName>
 
         <plugins>
             <plugin>
