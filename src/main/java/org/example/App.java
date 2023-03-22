@@ -1,133 +1,197 @@
 package org.example;
+import java.util.InputMismatchException;
+import java.util.Scanner;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
-import java.util.*;
-import java.lang.*;
-
 
 public class App {
     private static final Logger logger = LogManager.getLogger(App.class);
-    public App()
-    {
 
+    public App() {
     }
-    public static void main(String[] args)
-    {
-        App obj=new App();
-        char operator;
-        Double number1, number2=0.0, result;
+    public static void main(String[] args) {
+        App app = new App();
+        Scanner scanner = new Scanner(System.in);
+        double d_number1, d_number2;
+        int i_number1;
 
-        // create an object of Scanner class
-        Scanner input = new Scanner(System.in);
-        input.nextLine();
-        // ask users to enter operator
-      System.out.println("Choose an operator: l,p,f,s");
+        scanner.nextLine();
 
-        operator = input.next().charAt(0);
-        // ask users to enter numbers
-        if(operator=='+' || operator=='-' || operator=='p'  ) {
-            System.out.println("Enter first number");
-            number1 = input.nextDouble();
+        do {
+            System.out.println("Calculator-DevOps, Choose to perform operation");
+            System.out.print(
+                    "Enter 1 to find Factorial\n" +
+                            "Enter 2 to find Square Root\n" +
+                            "Enter 3 to find Power\n" +
+                            "Enter 4 to find Natural Logarithm\n" +
+                            "Enter any other input to Exit\n" +
+                            "Enter your choice: "
+            );
 
-            System.out.println("Enter second number");
-            number2 = input.nextDouble();
+            int choice;
+
+            try {
+                choice = scanner.nextInt();
+            }
+            catch (InputMismatchException error) {
+                System.out.println("Exiting....");
+                scanner.close();
+                return;
+            }
+
+            switch (choice) {
+                case 1:
+                    // find factorial
+                    i_number1 = -1;
+
+                    // Keep executing do-while loop till user enters a non-negative integer
+                    while (i_number1 < 0) {
+                        try {
+                            System.out.print("Enter a non-negative integer : ");
+                            i_number1 = scanner.nextInt();
+
+                            if (i_number1 < 0)
+                                System.out.println("Factorial is only applicable for non-negative integers");
+                            else
+                                System.out.println("Factorial of " + i_number1 + " is: " + app.factorial(i_number1) + "\n");
+                        }
+                        // To handle cases where user enters non-numeric input
+                        catch (InputMismatchException e) {
+                            System.out.println("Factorial is only applicable for non-negative integers");
+                        }
+                        scanner.nextLine(); // Clear the buffer to receive new input
+                    }
+
+                    break;
+
+                case 2:
+                    // find square root
+                    d_number1 = -1;
+
+                    // Keep executing do-while loop till user enters a non-negative number
+                    while (d_number1 < 0) {
+                        try {
+                            System.out.print("Enter a non-negative number: ");
+                            d_number1 = scanner.nextDouble();
+
+                            if (d_number1 < 0)
+                                System.out.println("Square Root is only applicable for non-negative numbers");
+                            else
+                                System.out.println("Square Root of " + d_number1 + " is: " + app.squareRoot(d_number1) + "\n");
+                        }
+                        // To handle cases where user enters non-numeric input
+                        catch (InputMismatchException e) {
+                            System.out.println("Square Root is only applicable for non-negative numbers");
+                        }
+                        scanner.nextLine(); // Clear the buffer to receive new input
+                    }
+
+                    break;
+
+                case 3:
+                    // find power
+                    d_number1 = Double.POSITIVE_INFINITY; d_number2 = Double.POSITIVE_INFINITY;
+                    while (d_number1 == Double.POSITIVE_INFINITY) {
+                        try {
+                            System.out.print("Enter the first number: ");
+                            d_number1 = scanner.nextDouble();
+                        }
+                        // To handle cases where user enters non-numeric input
+                        catch (InputMismatchException e) {
+                            System.out.println("Non-numeric input is not valid");
+                        }
+                        scanner.nextLine(); // Clear the buffer to receive new input
+                    }
+                    while (d_number2 == Double.POSITIVE_INFINITY) {
+                        try {
+                            System.out.print("Enter the second number: ");
+                            d_number2 = scanner.nextDouble();
+                        }
+                        // To handle cases where user enters non-numeric input
+                        catch (InputMismatchException e) {
+                            System.out.println("Non-numeric input is not valid");
+                        }
+                        scanner.nextLine(); // Clear the buffer to receive new input
+                    }
+
+                    System.out.println(d_number1 + " raised to " + d_number2 + " is: " + app.power(d_number1, d_number2));
+                    System.out.println("\n");
+                    break;
+
+                case 4:
+                    // find natural log
+                    d_number1 = 0;
+
+                    // Keep executing do-while loop till user enters a positive number
+                    while (d_number1 <= 0) {
+                        try {
+                            System.out.print("Enter a positive number: ");
+                            d_number1 = scanner.nextDouble();
+
+                            if (d_number1 <= 0)
+                                System.out.println("Natural Logarithm is only applicable for positive numbers");
+                            else
+                                System.out.println("Natural Logarithm of " + d_number1 + " is: " + app.naturalLog(d_number1) + "\n");
+                        }
+                        // To handle cases where user enters non-numeric input
+                        catch (InputMismatchException e) {
+                            System.out.println("Natural Logarithm is only applicable for positive numbers");
+                        }
+                        scanner.nextLine(); // Clear the buffer to receive new input
+                    }
+
+                    break;
+
+                default:
+                    System.out.println("Exiting....");
+                    scanner.close();
+                    return;
+            }
+        } while (true);
+    }
+
+    public int factorial(int number1) {
+        logger.info("[FACTORIAL] - " + number1);
+
+        int result = 1;
+        for(int i = 1; i <= number1; i++)
+            result *= i;
+
+        logger.info("[RESULT - FACTORIAL] - " + result);
+        return result;
+    }
+
+    public double squareRoot(double number1) {
+        logger.info("[SQ ROOT] - " + number1);
+        double result = Math.sqrt(number1);
+        logger.info("[RESULT - SQ ROOT] - " + result);
+        return result;
+    }
+
+    public double power(double number1, double number2) {
+        logger.info("[POWER - " + number1 + " RAISED TO] " + number2);
+        double result = Math.pow(number1,number2);
+        logger.info("[RESULT - POWER] - " + result);
+        return result;
+    }
+
+    public double naturalLog(double number1) {
+        logger.info("[NATURAL LOG] - " + number1);
+        double result = 0;
+
+        try {
+            if (number1 < 0) {
+                result = Double.NaN;
+                throw new ArithmeticException("Case of NaN 0.0/0.0");
+            }
+            else
+                result = Math.log(number1);
         }
-
-        else
-        {
-            System.out.println("Enter first number");
-            number1 = input.nextDouble();
+        catch (ArithmeticException error) {
+            System.out.println("[EXCEPTION - LOG] - Cannot find log of negative numbers " + error.getLocalizedMessage());
         }
-
-        switch (operator) {
-
-            // performs addition between numbers
-            case '+' :{
-                System.out.println(number1 + " + " + number2 + " = "+obj.sum(number1,number2) );
-                break;
-            }
-
-            // performs subtraction between numbers
-            case '-' :{
-
-                System.out.println(number1 + " - " + number2 + " = " + obj.minus(number1,number2));
-                break;
-            }
-
-            // performs multiplication between numbers
-            case 'p' : {
-                System.out.println("number1 raised to power number2 =" + obj.power(number1,number2));
-                break;
-            }
-
-            // performs division between numbers
-            case 'l' : {
-                System.out.println("log of number is"+ obj.naturallog(number1));
-                break;
-            }
-
-            case 'f': {
-                Double i=1.0;
-                Double fact=1.0;
-                while( i <= number1)
-                {
-                    fact = fact * i;
-                    i++; //increment i by 1
-                }
-                System.out.println(fact);
-                break;
-            }
-
-            case 's':
-            {
-                System.out.println(Math.sqrt(number1));
-                break;
-
-            }
-            default :{
-                System.out.println("Invalid operator!");
-                break;
-
-            }
-        }
-
-        //input.close();
-
+        logger.info("[RESULT - NATURAL LOG] - " + result);
+        return result;
     }
-
-    public double power(double num1,double num2)
-    {
-        double ans = Math.pow(num1,num2);
-        logger.info("calculated power of "+ num1+ " raised to "+num2 +" is "+ans);
-        return ans;
-    }
-
-    public double sum(double num1, double num2)
-    {
-        double ans = num1+num2;
-        logger.info("calculated sum "+ num1+ " and"+num2 +" is "+ans);
-        return ans;
-
-    }
-    public double minus(double num1, double num2)
-    {
-        double ans = num1-num2;
-        logger.info("difference is "+ num1+ " and "+num2 +" is "+ans);
-        return ans;
-    }
-    public double naturallog(double num1)
-    {
-        if(num1==0 || num1<0)
-        {
-            System.out.println("cannot find log");
-            System.exit(0);
-        }
-        double ans = Math.log(num1);
-        logger.info("calculated log of "+ num1+ans);
-        return ans;
-    }
-
-// i am pradhyuman joshi
-
+    // Testing webhook
 }
-
