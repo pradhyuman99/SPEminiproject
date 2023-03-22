@@ -1,6 +1,7 @@
 import org.example.Solve;
 import static org.junit.Assert.*;
 import org.junit.Test;
+import java.lang.Math;
 
 public class SolveTest {
 
@@ -8,25 +9,25 @@ public class SolveTest {
     Solve calculate= new Solve();
 
     @Test
-    public void multiplyTruePositive(){
-        assertEquals("Finding multiplication of two number for True Positive", 24, calculate.multiply(8,3), DELTA);
+    public void powerTruePositive(){
+        assertEquals("Finding power", 512, calculate.power(8,3), DELTA);
 
     }
     @Test
-    public void multiplyFalsePositive() {
-        assertNotEquals("Finding multiplication of two number for False Positive", 120, calculate.multiply(10, 4), DELTA);
+    public void powerFalsePositive() {
+        assertNotEquals("Finding power", 120, calculate.power(10, 4), DELTA);
 
     }
 
 
     @Test
-    public void divideTruePositive(){
-        assertEquals("Finding division of two number for True Positive", 8, calculate.divide(48,6), DELTA);
+    public void logTruePositive(){
+        assertEquals("Finding log", 1, calculate.naturallog(Math.exp(1)), DELTA);
 
     }
     @Test
-    public void divideFalsePositive() {
-        assertNotEquals("Finding division of two number for False Positive", 120, calculate.divide(10, 4), DELTA);
+    public void logFalsePositive() {
+        assertNotEquals("Finding log", 120, calculate.naturallog(10), DELTA);
 
     }
 

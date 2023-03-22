@@ -1,8 +1,8 @@
 package org.example;
 //import org.apache.logging.log4j.LogManager;
 //import org.apache.logging.log4j.Logger;
-import java.util.Scanner;
-import java.lang.Math;
+import java.util.*;
+import java.lang.*;
 
 
 public class Solve {
@@ -21,11 +21,11 @@ public class Solve {
         Scanner input = new Scanner(System.in);
 
         // ask users to enter operator
-      System.out.println("Choose an operator: +, -, *, /,f,s");
+      System.out.println("Choose an operator: l,p,f,s");
 
         operator = input.next().charAt(0);
         // ask users to enter numbers
-        if(operator=='+' || operator=='-' || operator=='*' || operator=='/'  ) {
+        if(operator=='+' || operator=='-' || operator=='p'  ) {
             System.out.println("Enter first number");
             number1 = input.nextDouble();
 
@@ -55,14 +55,14 @@ public class Solve {
             }
 
             // performs multiplication between numbers
-            case '*' : {
-                System.out.println(number1 + " * " + number2 + " = " + obj.multiply(number1,number2));
+            case 'p' : {
+                System.out.println("number1 raised to power number2 =" + obj.power(number1,number2));
                 break;
             }
 
             // performs division between numbers
-            case '/' : {
-                System.out.println(number1 + " / " + number2 + " = " + obj.divide(number1,number2));
+            case 'l' : {
+                System.out.println("log of number is"+ obj.naturallog(number1));
                 break;
             }
 
@@ -95,9 +95,9 @@ public class Solve {
 
     }
 
-    public double multiply(double num1, double num2)
+    public double power(double num1,double num2)
     {
-        return num1 * num2;
+        return Math.pow(num1,num2);
     }
 
     public double sum(double num1, double num2)
@@ -108,14 +108,14 @@ public class Solve {
     {
         return num1 - num2;
     }
-    public double divide(double num1, double num2)
+    public double naturallog(double num1)
     {
-        if(num2==0)
+        if(num1==0 || num1<0)
         {
-            System.out.println("Division by zero error");
-            return 0.0;
+            System.out.println("cannot find log");
+            System.exit(0);
         }
-        return num1 / num2;
+        return Math.log(num1);
     }
 
 
