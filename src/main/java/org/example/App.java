@@ -5,15 +5,15 @@ import java.util.*;
 import java.lang.*;
 
 
-public class Solve {
-    private static final Logger logger = LogManager.getLogger(Solve.class);
-    public Solve()
+public class App {
+    private static final Logger logger = LogManager.getLogger(App.class);
+    public App()
     {
 
     }
     public static void main(String[] args)
     {
-        Solve obj=new Solve();
+        App obj=new App();
         char operator;
         Double number1, number2=0.0, result;
 

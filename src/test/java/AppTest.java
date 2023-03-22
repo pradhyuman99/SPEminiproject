@@ -1,12 +1,12 @@
-import org.example.Solve;
+import org.example.App;
 import static org.junit.Assert.*;
 import org.junit.Test;
 import java.lang.Math;
 
-public class SolveTest {
+public class AppTest {
 
     private static final double DELTA = 1e-15;
-    Solve calculate= new Solve();
+    App calculate= new App();
 
     @Test
     public void powerTruePositive(){
