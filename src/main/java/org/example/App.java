@@ -19,7 +19,7 @@ public class App {
 
         // create an object of Scanner class
         Scanner input = new Scanner(System.in);
-
+        input.nextLine();
         // ask users to enter operator
       System.out.println("Choose an operator: l,p,f,s");
 
