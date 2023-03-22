@@ -1,12 +1,12 @@
 package org.example;
-//import org.apache.logging.log4j.LogManager;
-//import org.apache.logging.log4j.Logger;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 import java.util.*;
 import java.lang.*;
 
 
 public class Solve {
-//    private static final Logger logger = LogManager.getLogger(Solve.class);
+    private static final Logger logger = LogManager.getLogger(Solve.class);
     public Solve()
     {
 
@@ -97,16 +97,23 @@ public class Solve {
 
     public double power(double num1,double num2)
     {
-        return Math.pow(num1,num2);
+        double ans = Math.pow(num1,num2);
+        logger.info("calculated power of "+ num1+ " raised to "+num2 +" is "+ans);
+        return ans;
     }
 
     public double sum(double num1, double num2)
     {
-        return num1 + num2;
+        double ans = num1+num2;
+        logger.info("calculated sum "+ num1+ " and"+num2 +" is "+ans);
+        return ans;
+
     }
     public double minus(double num1, double num2)
     {
-        return num1 - num2;
+        double ans = num1-num2;
+        logger.info("difference is "+ num1+ " and "+num2 +" is "+ans);
+        return ans;
     }
     public double naturallog(double num1)
     {
@@ -115,7 +122,9 @@ public class Solve {
             System.out.println("cannot find log");
             System.exit(0);
         }
-        return Math.log(num1);
+        double ans = Math.log(num1);
+        logger.info("calculated log of "+ num1+ans);
+        return ans;
     }
 
 // i am pradhyuman joshi
