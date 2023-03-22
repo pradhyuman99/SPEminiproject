@@ -118,7 +118,7 @@ public class Solve {
         return Math.log(num1);
     }
 
-
+// i am pradhyuman joshi
 
 }
 
